@@ -1,7 +1,6 @@
 # HyprWeather
 
-HyprWeather — приложение для отображения текущей погоды
-и времени в Waybar для рабочего окружения Hyprland.
+HyprWeather — приложение погоды для Hyprland и Waybar.
 
 Приложение получает данные о погоде через Open-Meteo API
 и выводит их в пользовательском модуле Waybar.
