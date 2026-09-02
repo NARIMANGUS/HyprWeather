@@ -1,0 +1,16 @@
+{
+  "modules-center": ["clock", "custom/weather"],
+
+  "custom/weather": {
+    "exec": "~/.config/waybar/scripts/weather.py",
+    "interval": 60,
+    "return-type": "json"
+  },
+
+  "clock": {
+    "timezone": "Europe/Moscow",
+    "format": "{:%H:%M:%S}",
+    "tooltip-format": "{:%d.%m.%Y}",
+    "interval": 1
+  }
+}
