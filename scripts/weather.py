@@ -8,7 +8,7 @@ lat =  55.40
 lon =  37.16
 
 url =  f"https://api.open-meteo.com/v1/forecast?latitude={lat}&longitude={lon}&current=temperature_2m,surface_pressure,weather_code&timezone=auto"
-with urllib.request.urlopen(url) as response:
+with urllib.request.urlopen(url, timeout=5) as response:
     data = response.read().decode('utf-8')
 
 weather_data = json.loads(data)
