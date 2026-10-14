@@ -1,82 +1,30 @@
 # HyprWeather
 
-HyprWeather — погодный модуль для Hyprland и Waybar.
-
-Проект состоит из Java-сервера и клиента для Waybar. Сервер получает данные через Open-Meteo API, а клиент выводит их в панели.
-
-## Возможности
-
-- текущая температура;
-- атмосферное давление;
-- состояние погоды;
-- погодная иконка;
-- выбор города через конфигурационный файл;
-- HTTP API;
-- интеграция с Waybar.
+HTTP API для получения текущей погоды по названию города.
 
 ## Технологии
+Java 21, HttpServer, Maven, Jackson, Open-Meteo, Docker.
 
-- Java 21
-- Maven
-- Jackson
-- Java HttpClient / HttpServer
-- Waybar
-- Hyprland
-- Open-Meteo API
+## Сборка Java
+mvn clean package
 
-## API
+## Сборка Docker
+sudo docker build -t hyprweather .
 
-Сервер запускается на:
+## Запуск контейнера
+sudo docker run -d --name hyprweather-api -p 8080:8080 hyprweather
 
-```text
-http://localhost:8080
+## Проверка API
+curl -i 'http://127.0.0.1:8080/weather?city=Riga'
 
-Получение погоды:
+## Проверка контейнера
+sudo docker ps
 
-GET /weather?city=Moscow
+## Просмотр логов
+sudo docker logs hyprweather-api
 
-Пример ответа:
+## Остановка контейнера
+sudo docker stop hyprweather-api
 
-{
-  "city": "Moscow",
-  "temperature": 18.3,
-  "pressure": 750,
-  "condition": "переменная облачность",
-  "icon": "🌤"
-}
-Настройка клиента
-
-Клиент читает конфигурацию из:
-
-~/.config/hyprweather/config.json
-
-Пример:
-
-{
-  "city": "Riga",
-  "backendUrl": "http://localhost:8080"
-}
-
-Пример файла находится в:
-
-java/config/config.example.json
-Waybar
-
-В конфигурацию Waybar необходимо добавить модуль:
-
-"custom/weather": {
-  "exec": "java -jar /path/to/hyprweather-client.jar",
-  "interval": 60,
-  "return-type": "json"
-}
-
-Клиент выводит данные в формате:
-
-{
-  "text": "18.0°C ☁",
-  "tooltip": "Riga\n🌡 18.0°C\n🧭 764 мм\n☁ пасмурно"
-}
-
-Пример конфигурации Waybar находится в:
-
-waybar/config.jsonc
+## Результаты проверки
+docker-ps.txt, api-test.txt, docker-logs.txt.

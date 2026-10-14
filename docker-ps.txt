@@ -1,0 +1,2 @@
+CONTAINER ID   IMAGE         COMMAND               CREATED         STATUS         PORTS                                       NAMES
+d6535c7a3fea   hyprweather   "java -jar app.jar"   2 minutes ago   Up 2 minutes   0.0.0.0:8080->8080/tcp, :::8080->8080/tcp   hyprweather-api
